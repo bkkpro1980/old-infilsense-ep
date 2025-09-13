@@ -78,12 +78,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     const row = document.createElement('tr');
                     const dataAsString = (typeof value === 'object' && value !== null) ? JSON.stringify(value, null, 2) : value;
 
+                    // Only show delete button for Keys, not for Configs
+                    const deleteButton = pathPrefix === 'Keys' ? 
+                        `<button onclick="deleteEntry('${pathPrefix}/${id}')">Delete</button>` : 
+                        '';
+
                     row.innerHTML = `
                         <td>${id}</td>
                         <td><pre>${dataAsString}</pre></td>
                         <td>
                             <button onclick="openEditModal('${pathPrefix}/${id}', '${id}')">Edit</button>
-                            <button onclick="deleteEntry('${pathPrefix}/${id}')">Delete</button>
+                            ${deleteButton}
                         </td>
                     `;
                     tableBody.appendChild(row);
@@ -93,8 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.openEditModal = (path, id) => {
             // Improve modal title for clarity
-            if (path.startsWith('connectedKeys/')) {
-                modalTitle.innerText = `Edit User Connection: ${id}`;
+            if (path.startsWith('Configs/')) {
+                modalTitle.innerText = `Edit Configuration: ${id}`;
             } else if (path.startsWith('Keys/')) {
                 modalTitle.innerText = `Edit License Key: ${id}`;
             } else {
@@ -113,11 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 db.ref(path).remove()
                     .then(() => {
                         console.log('Successfully deleted:', path);
-                        // If deleting from connectedKeys, also delete from connectedKeys2
-                        if (path.startsWith('connectedKeys/')) {
-                            const userId = path.split('/')[1];
-                            return db.ref('connectedKeys2/' + userId).remove();
-                        }
                     })
                     .catch(error => {
                         console.error('Error deleting entry:', error);
@@ -185,26 +185,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         keysSearchInput.addEventListener('input', filterAndRenderKeys);
 
-        const connectedKeysTableBody = document.querySelector('#connected-keys-table tbody');
-        const connectedKeysSearchInput = document.getElementById('connected-keys-search');
-        let allConnectedKeysData = {};
-        db.ref('connectedKeys').on('value', (snapshot) => {
-            allConnectedKeysData = snapshot.val() || {};
-            filterAndRenderConnectedKeys();
+        const configsTableBody = document.querySelector('#configs-table tbody');
+        const configsSearchInput = document.getElementById('configs-search');
+        let allConfigsData = {};
+        
+        // Try to fetch configs
+        const configsRef = db.ref('Configs');
+        console.log('Attempting to fetch configs...');
+        
+        configsRef.on('value', (snapshot) => {
+            console.log('Configs snapshot received:', snapshot.exists() ? 'data exists' : 'no data');
+            allConfigsData = snapshot.val() || {};
+            filterAndRenderConfigs();
+        }, (error) => {
+            console.error('Error fetching configs:', error);
+            configsTableBody.innerHTML = '<tr><td colspan="3">Error loading configs: ' + error.message + '</td></tr>';
         });
-        function filterAndRenderConnectedKeys() {
-            const search = (connectedKeysSearchInput.value || '').toLowerCase();
+
+        function filterAndRenderConfigs() {
+            const search = (configsSearchInput.value || '').toLowerCase();
             const filtered = {};
-            for (const id in allConnectedKeysData) {
+            for (const id in allConfigsData) {
                 if (
                     id.toLowerCase().startsWith(search) ||
-                    (typeof allConnectedKeysData[id] === 'object' && JSON.stringify(allConnectedKeysData[id]).toLowerCase().startsWith(search))
+                    (typeof allConfigsData[id] === 'object' && JSON.stringify(allConfigsData[id]).toLowerCase().startsWith(search))
                 ) {
-                    filtered[id] = allConnectedKeysData[id];
+                    filtered[id] = allConfigsData[id];
                 }
             }
-            renderTable('Connected Keys', connectedKeysTableBody, filtered, 'connectedKeys');
+            renderTable('Configs', configsTableBody, filtered, 'Configs');
         }
-        connectedKeysSearchInput.addEventListener('input', filterAndRenderConnectedKeys);
+        configsSearchInput?.addEventListener('input', filterAndRenderConfigs);
     }
 });
