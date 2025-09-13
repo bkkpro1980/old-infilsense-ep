@@ -107,6 +107,18 @@
             z-index: 1000;
         }
 
+        .hamburger-menu.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
         .header.show-hamburger .hamburger-menu {
             display: flex !important;
         }
@@ -145,7 +157,7 @@
 			}
 		}
 
-		@media (max-width: 768px) {
+		@media (max-width: 1006px) {
 			.hamburger-menu {
                 display: flex !important;
             }

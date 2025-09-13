@@ -10,6 +10,72 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+<style>
+    .community-section {
+        padding: 120px 5% 50px;
+        min-height: 100vh;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 3.5rem;
+        margin-bottom: 4rem;
+    }
+
+    .community-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+    }
+
+    .community-card {
+        background: rgba(3, 8, 20, 0.8);
+        border: 1px solid #101420;
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .community-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 30px rgba(90, 158, 248, 0.3);
+    }
+
+    .card-icon {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        color: #5A9EF8;
+    }
+
+    .community-card h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .community-card p {
+        color: #989BA3;
+        margin-bottom: 1.5rem;
+    }
+
+    .community-btn {
+        background: linear-gradient(45deg, #5A9EF8, #3676EF);
+        border: none;
+        border-radius: 10px;
+        padding: 0.8rem 1.5rem;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .community-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(90, 158, 248, 0.5);
+    }
+</style>
 <body>
     <div id="header"></div>
     <div class="retrowave-bg animate__animated animate__fadeIn"></div>
@@ -17,23 +83,6 @@
         <div class="tile-grid animate__animated animate__slideInUp"></div>
     </div>
     <div id="particles-js"></div>
-
-    <!--<header class="header animate__animated animate__fadeInDown">
-        <img src="Media/InfilSenseTransparentLogo.png" alt="InfilSense Logo" class="logo-image" width="40" height="40">
-        <div class="logo glow-effect cyberpunk-text">InfilSense</div>
-        <button class="hamburger-menu" aria-label="Toggle navigation menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <nav class="header-nav">
-            <a href="index.html" class="nav-link"><img src="Media/HomeIcons.png" alt="Home" width="25" height="25"> Home</a>
-            <a href="community.html" class="nav-link"><img src="Media/PeopleIcon.png" alt="Community" width="25" height="25"> Community</a>
-            <a href="terms.html" class="nav-link"><img src="Media/tos.png" alt="Terms of Service" width="20" height="20"> Terms of Service</a>
-            <a href="privacy.html" class="nav-link"><img src="Media/privacy.png" alt="Privacy Policy" width="20" height="20"> Privacy Policy</a>
-            <a href="admin-dashboard.html" class="nav-link"><img src="Media/ForumIcon.png" alt="Admin Dashboard" width="22" height="22"> Admin Dashboard</a>
-        </nav>
-    </header>-->
 
     <main class="community-section">
         <h1 class="section-title gradient-text animate__animated animate__fadeInDown">
@@ -49,104 +98,12 @@
                 <p>Join our Discord community</p>
                 <a href="https://discord.gg/VDQgaCxUtD" target="_blank" class="community-btn">Join Discord</a>
             </div>
+        </div>
     </main>
 
     <footer class="footer">
         <p>By using our service(s), you acknowledge that you have read, understood, and agree to be bound by our <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>.</p>
     </footer>
-
-    <style>
-        .community-section {
-            padding: 120px 5% 50px;
-            min-height: 100vh;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 3.5rem;
-            margin-bottom: 4rem;
-        }
-
-        .community-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .community-card {
-            background: rgba(3, 8, 20, 0.8);
-            border: 1px solid #101420;
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .community-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 0 30px rgba(90, 158, 248, 0.3);
-        }
-
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            color: #5A9EF8;
-        }
-
-        .community-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .community-card p {
-            color: #989BA3;
-            margin-bottom: 1.5rem;
-        }
-
-        .community-btn {
-            background: linear-gradient(45deg, #5A9EF8, #3676EF);
-            border: none;
-            border-radius: 10px;
-            padding: 0.8rem 1.5rem;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .community-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(90, 158, 248, 0.5);
-        }
-
-        .community-stats {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 5rem;
-            padding: 2rem;
-            background: rgba(3, 8, 20, 0.8);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            display: block;
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: #989BA3;
-            font-size: 1.1rem;
-        }
-    </style>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="main.js"></script>
