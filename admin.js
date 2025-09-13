@@ -16,18 +16,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const loginError = document.getElementById('login-error');
 
         if (loginForm) {
-            loginForm.addEventListener('submit', (e) => {
+            loginForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
+                e.stopPropagation();
+                
                 const email = document.getElementById('email').value;
                 const password = document.getElementById('password').value;
-
-                auth.signInWithEmailAndPassword(email, password)
-                    .then((userCredential) => {
-                        window.location.href = '/admin-dashboard.html';
-                    })
-                    .catch((error) => {
-                        loginError.innerText = error.message;
-                    });
+                
+                try {
+                    const userCredential = await auth.signInWithEmailAndPassword(email, password);
+                    if (userCredential.user) {
+                        window.location.href = 'admin-dashboard.html';
+                    }
+                } catch (error) {
+                    console.error('Login error:', error);
+                    loginError.style.display = 'block';
+                    loginError.innerText = error.message || 'Failed to login. Please try again.';
+                }
+                
+                return false;
             });
         }
     }
