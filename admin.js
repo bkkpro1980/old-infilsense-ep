@@ -189,6 +189,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const configsSearchInput = document.getElementById('configs-search');
         let allConfigsData = {};
         
+        if (!configsTableBody) {
+            console.error('Could not find configs table body element');
+            return;
+        }
+        
         // Try to fetch configs
         const configsRef = db.ref('Configs');
         console.log('Attempting to fetch configs...');
@@ -199,22 +204,32 @@ document.addEventListener('DOMContentLoaded', () => {
             filterAndRenderConfigs();
         }, (error) => {
             console.error('Error fetching configs:', error);
-            configsTableBody.innerHTML = '<tr><td colspan="3">Error loading configs: ' + error.message + '</td></tr>';
+            if (configsTableBody) {
+                configsTableBody.innerHTML = '<tr><td colspan="3">Error loading configs: ' + error.message + '</td></tr>';
+            }
         });
 
         function filterAndRenderConfigs() {
-            const search = (configsSearchInput.value || '').toLowerCase();
+            const search = configsSearchInput ? configsSearchInput.value.toLowerCase() : '';
             const filtered = {};
             for (const id in allConfigsData) {
                 if (
-                    id.toLowerCase().startsWith(search) ||
-                    (typeof allConfigsData[id] === 'object' && JSON.stringify(allConfigsData[id]).toLowerCase().startsWith(search))
+                    id.toLowerCase().includes(search) ||
+                    (typeof allConfigsData[id] === 'object' && JSON.stringify(allConfigsData[id]).toLowerCase().includes(search))
                 ) {
                     filtered[id] = allConfigsData[id];
                 }
             }
-            renderTable('Configs', configsTableBody, filtered, 'Configs');
+            if (configsTableBody) {
+                renderTable('Configs', configsTableBody, filtered, 'Configs');
+            }
         }
-        configsSearchInput?.addEventListener('input', filterAndRenderConfigs);
+
+        // Only add event listener if the search input exists
+        if (configsSearchInput) {
+            configsSearchInput.addEventListener('input', filterAndRenderConfigs);
+        } else {
+            console.warn('Configs search input not found');
+        }
     }
 });
