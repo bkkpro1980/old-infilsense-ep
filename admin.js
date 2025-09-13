@@ -110,12 +110,19 @@ document.addEventListener('DOMContentLoaded', () => {
         
         window.deleteEntry = (path) => {
             if (confirm('Are you sure you want to delete this entry? Its sub-data will also be removed.')) {
-                db.ref(path).remove();
-tho                // If deleting from connectedKeys, also delete from connectedKeys2
-                if (pwiath.startsWith('connectedKeys/')) {
-                    const userId = path.split('/')[1];
-                    db.ref('connectedKeys2/' + userId).remove();
-                }
+                db.ref(path).remove()
+                    .then(() => {
+                        console.log('Successfully deleted:', path);
+                        // If deleting from connectedKeys, also delete from connectedKeys2
+                        if (path.startsWith('connectedKeys/')) {
+                            const userId = path.split('/')[1];
+                            return db.ref('connectedKeys2/' + userId).remove();
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error deleting entry:', error);
+                        alert('Error deleting entry: ' + error.message);
+                    });
             }
         };
 
@@ -150,9 +157,18 @@ tho                // If deleting from connectedKeys, also delete from connected
         const keysTableBody = document.querySelector('#keys-table tbody');
         const keysSearchInput = document.getElementById('keys-search');
         let allKeysData = {};
-        db.ref('Keys').on('value', (snapshot) => {
+        
+        // Try both 'Keys' and 'keys' paths
+        const keysRef = db.ref('Keys');
+        console.log('Attempting to fetch keys...');
+        
+        keysRef.on('value', (snapshot) => {
+            console.log('Keys snapshot received:', snapshot.exists() ? 'data exists' : 'no data');
             allKeysData = snapshot.val() || {};
             filterAndRenderKeys();
+        }, (error) => {
+            console.error('Error fetching keys:', error);
+            keysTableBody.innerHTML = '<tr><td colspan="3">Error loading keys: ' + error.message + '</td></tr>';
         });
         function filterAndRenderKeys() {
             const search = (keysSearchInput.value || '').toLowerCase();
