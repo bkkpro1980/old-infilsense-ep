@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Redirect to dashboard if already logged in
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
-                window.location.href = '/admin-dashboard.html';
+                window.location.href = 'admin-dashboard.html';
             }
         });
         const loginForm = document.getElementById('login-form');
@@ -41,12 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Logic for the protected admin dashboard
     if (path.includes('admin-dashboard.html')) {
+        console.log('Initializing admin dashboard...');
         const logoutButton = document.getElementById('logout-button');
 
         auth.onAuthStateChanged((user) => {
             if (!user) {
                 // If no user is logged in, redirect to the login page
-                window.location.href = '/admin.html';
+                window.location.href = 'admin.html';
             }
         });
 
@@ -54,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             logoutButton.addEventListener('click', () => {
                 auth.signOut().then(() => {
                     // Sign-out successful, redirect to login page.
-                    window.location.href = '/admin.html';
+                    window.location.href = 'admin.html';
                 }).catch((error) => {
                     console.error('Sign out error', error);
                 });
@@ -154,6 +155,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // --- Data Listeners ---
+        const configsTableBody = document.querySelector('#configs-table tbody');
+        const configsSearchInput = document.getElementById('configs-search');
+        let allConfigsData = {};
+        
+        if (!configsTableBody) {
+            console.error('Could not find configs table body element');
+            return;
+        }
+        
+        // Try to fetch configs
+        const configsRef = db.ref('Configs');
+        console.log('Attempting to fetch configs...');
+        
+        configsRef.on('value', (snapshot) => {
+            console.log('Configs snapshot received:', snapshot.exists() ? 'data exists' : 'no data');
+            allConfigsData = snapshot.val() || {};
+            filterAndRenderConfigs();
+        }, (error) => {
+            console.error('Error fetching configs:', error);
+            if (configsTableBody) {
+                configsTableBody.innerHTML = '<tr><td colspan="3">Error loading configs: ' + error.message + '</td></tr>';
+            }
+        });
+
+        // Only add event listener if the search input exists
+        if (configsSearchInput) {
+            configsSearchInput.addEventListener('input', filterAndRenderConfigs);
+        } else {
+            console.warn('Configs search input not found');
+        }
+
         const keysTableBody = document.querySelector('#keys-table tbody');
         const keysSearchInput = document.getElementById('keys-search');
         let allKeysData = {};
@@ -185,30 +217,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         keysSearchInput.addEventListener('input', filterAndRenderKeys);
 
-        const configsTableBody = document.querySelector('#configs-table tbody');
-        const configsSearchInput = document.getElementById('configs-search');
-        let allConfigsData = {};
-        
-        if (!configsTableBody) {
-            console.error('Could not find configs table body element');
-            return;
-        }
-        
-        // Try to fetch configs
-        const configsRef = db.ref('Configs');
-        console.log('Attempting to fetch configs...');
-        
-        configsRef.on('value', (snapshot) => {
-            console.log('Configs snapshot received:', snapshot.exists() ? 'data exists' : 'no data');
-            allConfigsData = snapshot.val() || {};
-            filterAndRenderConfigs();
-        }, (error) => {
-            console.error('Error fetching configs:', error);
-            if (configsTableBody) {
-                configsTableBody.innerHTML = '<tr><td colspan="3">Error loading configs: ' + error.message + '</td></tr>';
-            }
-        });
-
         function filterAndRenderConfigs() {
             const search = configsSearchInput ? configsSearchInput.value.toLowerCase() : '';
             const filtered = {};
@@ -223,13 +231,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (configsTableBody) {
                 renderTable('Configs', configsTableBody, filtered, 'Configs');
             }
-        }
-
-        // Only add event listener if the search input exists
-        if (configsSearchInput) {
-            configsSearchInput.addEventListener('input', filterAndRenderConfigs);
-        } else {
-            console.warn('Configs search input not found');
         }
     }
 });
