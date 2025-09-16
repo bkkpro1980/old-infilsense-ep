@@ -4,16 +4,24 @@
     <title>InfilSense Admin Dashboard</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.gstatic.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;">
     <link rel="icon" type="image/x-icon" href="Media/InfilSenseTransparentLogo.png">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div id="header"></div>
-    <div class="admin-dashboard-container" style="margin-top: 50px;">
-        <h2>Admin Database Management</h2>
-        <p>Manage license keys and user connections below.</p>
+    <div id="header" style="padding-bottom: 3rem;"></div>
+    <div class="retrowave-bg"></div>
+    <div class="retro-tiles animate__animated animate__fadeInUp">
+        <div class="tile-grid"></div>
+    </div>
+    <div id="particles-js"></div>
+    <div class="admin-dashboard-container">
+        <h2 class="animate__animated animate__fadeInLeft">Admin Database Management</h2>
+        <p class="animate__animated animate__slideInLeft" style="padding-bottom: 2rem;">Manage license keys and user connections below.</p>
         
-        <div class="table-section">
+        <div class="table-section animate__animated animate__slideInLeft animate__delay-1s">
             <h3>Configurations</h3>
             <input type="text" id="configs-search" class="table-search" placeholder="Search configs..." />
             <div class="table-container">
@@ -30,7 +38,7 @@
             </div>
         </div>
 
-        <div class="table-section">
+        <div class="table-section animate__animated animate__slideInLeft animate__delay-1s">
             <h3>Unused License Keys</h3>
             <input type="text" id="keys-search" class="table-search" placeholder="Search unused license keys..." />
             <div class="table-container">

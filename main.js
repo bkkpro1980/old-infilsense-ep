@@ -3,12 +3,12 @@ document.oncontextmenu = function (e) {
 	return false;
 };
 /* document.onkeydown = function(e) {
-    if (e.ctrlKey && e.shiftKey && e.key === "I") {
-        return false;
-    }
-    if (e.key === "F12") {
-        return false;
-    }
+	if (e.ctrlKey && e.shiftKey && e.key === "I") {
+		return false;
+	}
+	if (e.key === "F12") {
+		return false;
+	}
 };
  */
 (function () {
@@ -40,98 +40,123 @@ document.oncontextmenu = function (e) {
 	}
 })();
 
-particlesJS("particles-js", {
-  "particles": {
-    "number": {
-      "value": 120,
-      "density": {
-        "enable": true,
-        "value_area": 800
-      }
-    },
-    "color": {
-      "value": "#ffffff"
-    },
-    "shape": {
-      "type": "circle",
-      "stroke": {
-        "width": 0,
-        "color": "#000000"
-      },
-      "polygon": {
-        "nb_sides": 5
-      },
-      "image": {
-        "src": "img/github.svg",
-        "width": 100,
-        "height": 100
-      }
-    },
-    "opacity": {
-      "value": 1,
-      "random": true,
-      "anim": {
-        "enable": true,
-        "speed": 1,
-        "opacity_min": 0,
-        "sync": false
-      }
-    },
-    "size": {
-      "value": 3,
-      "random": true,
-      "anim": {
-        "enable": false,
-        "speed": 4,
-        "size_min": 0.3,
-        "sync": false
-      }
-    },
-    "line_linked": {
-      "enable": false,
-      "distance": 150,
-      "color": "#ffffff",
-      "opacity": 0.4,
-      "width": 1
-    },
-    "move": {
-      "enable": true,
-      "speed": 1,
-      "direction": "none",
-      "random": true,
-      "straight": false,
-      "out_mode": "out",
-      "bounce": false,
-      "attract": {
-        "enable": false,
-        "rotateX": 600,
-        "rotateY": 600
-      }
-    }
-  },
-  "interactivity": {
-    "detect_on": "window",
-    "events": {
-      "onhover": {
-        "enable": true,
-        "mode": "grab"
-      },
-      "onclick": {
-        "enable": true,
-        "mode": "push"
-      },
-      "resize": true
-    },
-    "modes": {
-      "grab": {
-        "distance": 150,
-        "line_linked": {
-          "opacity": 1
-        }
-      },
-      "push": {
-        "particles_nb": 8
-      },
-    }
-  }
-});
+// Initialize particles only if the element exists
+function initParticles() {
+	const particlesElement = document.getElementById("particles-js");
+	if (!particlesElement) return;
+
+	// Load particles.js script if not already loaded
+	if (!window.particlesJS) {
+		const script = document.createElement("script");
+		script.src = "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js";
+		script.onload = () => {
+			initParticlesConfig();
+		};
+		document.body.appendChild(script);
+	} else {
+		initParticlesConfig();
+	}
+}
+
+function initParticlesConfig() {
+	if (!window.particlesJS) return;
+
+	particlesJS("particles-js", {
+		particles: {
+			number: {
+				value: 120,
+				density: {
+					enable: true,
+					value_area: 800,
+				},
+			},
+			color: {
+				value: "#ffffff",
+			},
+			shape: {
+				type: "circle",
+				stroke: {
+					width: 0,
+					color: "#000000",
+				},
+				polygon: {
+					nb_sides: 5,
+				},
+				image: {
+					src: "img/github.svg",
+					width: 100,
+					height: 100,
+				},
+			},
+			opacity: {
+				value: 1,
+				random: true,
+				anim: {
+					enable: true,
+					speed: 1,
+					opacity_min: 0,
+					sync: false,
+				},
+			},
+			size: {
+				value: 3,
+				random: true,
+				anim: {
+					enable: false,
+					speed: 4,
+					size_min: 0.3,
+					sync: false,
+				},
+			},
+			line_linked: {
+				enable: false,
+				distance: 150,
+				color: "#ffffff",
+				opacity: 0.4,
+				width: 1,
+			},
+			move: {
+				enable: true,
+				speed: 1,
+				direction: "none",
+				random: true,
+				straight: false,
+				out_mode: "out",
+				bounce: false,
+				attract: {
+					enable: false,
+					rotateX: 600,
+					rotateY: 600,
+				},
+			},
+		},
+		interactivity: {
+			detect_on: "window",
+			events: {
+				onhover: {
+					enable: true,
+					mode: "grab",
+				},
+				onclick: {
+					enable: true,
+					mode: "push",
+				},
+				resize: true,
+			},
+			modes: {
+				grab: {
+					distance: 150,
+					line_linked: {
+						opacity: 1,
+					},
+				},
+				push: {
+					particles_nb: 8,
+				},
+			},
+		},
+	});
+}
+
+// Call initParticles after the page loads
+document.addEventListener("DOMContentLoaded", initParticles);
