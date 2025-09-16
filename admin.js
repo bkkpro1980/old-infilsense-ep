@@ -6,12 +6,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Logic for the admin login page
     if (path.includes('admin.html')) {
-        // Redirect to dashboard if already logged in
-        firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-                window.location.href = 'admin-dashboard.html';
+        console.log('Initializing admin login...');
+        firebase.auth().onAuthStateChanged(async (user) => {
+            if (!user) {
+                window.location.href = 'admin.html';
+            } else {
+                // Force refresh token so custom claims (like admin) are up-to-date
+                await user.getIdToken(true);
+                console.log("ID token refreshed; admin claims should be current.");
+
+                // Optional: now safely fetch /Configs or /Keys
+                const configsRef = db.ref('Configs');
+                configsRef.once('value').then(snapshot => {
+                    console.log('Configs snapshot after refresh:', snapshot.val());
+                });
             }
         });
+
         const loginForm = document.getElementById('login-form');
         const loginError = document.getElementById('login-error');
 
