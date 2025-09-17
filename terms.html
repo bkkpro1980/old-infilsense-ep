@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InfilSense ToS</title>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;">
     <link rel="icon" type="image/x-icon" href="Media/InfilSenseTransparentLogo.png">
 	<link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
@@ -130,9 +130,9 @@
 </style>
 <body>
     <div id="header"></div>
-    <div class="retrowave-bg animate__animated animate__fadeIn"></div>
-    <div class="retro-tiles">
-        <div class="tile-grid animate__animated animate__slideInUp"></div>
+    <div class="retrowave-bg"></div>
+    <div class="retro-tiles animate__animated animate__fadeInUp">
+        <div class="tile-grid"></div>
     </div>
     <div id="particles-js"></div>
 
@@ -141,10 +141,10 @@
             Terms of Service
         </h1>
 
-        <div class="terms-grid animate__animated animate__fadeInUp">
-            <div class="terms-card animate__animated animate__fadeIn">
+        <div class="terms-grid animate__animated animate__fadeIn animate__delay-1s">
+            <div class="terms-card">
                 <div class="card-icon">
-                    <img src="Media/tos.png" alt="ToS Icon" width="60" height="60">
+                    <img src="Media/tos.png" alt="ToS Icon" width="60" height="60" loading="lazy" decoding="async">
                 </div>
                 <h3 class="infilsense-gradient">InfilSense Loader</h3>
                 <p><strong>Effective Date:</strong> 21/05/2025</p>
@@ -168,7 +168,7 @@
                 <p>We may update these Terms at any time. Continued use of the service constitutes acceptance of any modifications.</p>
             </div>
 
-            <div class="terms-card animate__animated animate__fadeIn">
+            <div class="terms-card">
                 <div class="card-icon">
                     <i class="fas fa-shield-alt"></i>
                 </div>

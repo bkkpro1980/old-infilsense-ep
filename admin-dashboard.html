@@ -11,47 +11,51 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div id="header" style="padding-bottom: 3rem;"></div>
+    <div id="header"></div>
     <div class="retrowave-bg"></div>
     <div class="retro-tiles animate__animated animate__fadeInUp">
         <div class="tile-grid"></div>
     </div>
     <div id="particles-js"></div>
+    
     <div class="admin-dashboard-container">
+        <div style="margin-top: 4rem;"></div>
         <h2 class="animate__animated animate__fadeInLeft">Admin Database Management</h2>
         <p class="animate__animated animate__slideInLeft" style="padding-bottom: 2rem;">Manage license keys and user connections below.</p>
         
-        <div class="table-section animate__animated animate__slideInLeft animate__delay-1s">
-            <h3>Configurations</h3>
-            <input type="text" id="configs-search" class="table-search" placeholder="Search configs..." />
-            <div class="table-container">
-                <table id="configs-table">
-                    <thead>
-                        <tr>
-                            <th>Config ID</th>
-                            <th>Config Data</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+        <div class="animate__animated animate__fadeIn animate__delay-1s">
+            <div class="table-section">
+                <h3>Configurations</h3>
+                <input type="text" id="configs-search" class="table-search" placeholder="Search configs..." />
+                <div class="table-container">
+                    <table id="configs-table">
+                        <thead>
+                            <tr>
+                                <th>Config ID</th>
+                                <th>Config Data</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
-        </div>
 
-        <div class="table-section animate__animated animate__slideInLeft animate__delay-1s">
-            <h3>Unused License Keys</h3>
-            <input type="text" id="keys-search" class="table-search" placeholder="Search unused license keys..." />
-            <div class="table-container">
-                <table id="keys-table">
-                    <thead>
-                        <tr>
-                            <th>Key</th>
-                            <th>Key Data</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+            <div class="table-section">
+                <h3>Unused License Keys</h3>
+                <input type="text" id="keys-search" class="table-search" placeholder="Search unused license keys..." />
+                <div class="table-container">
+                    <table id="keys-table">
+                        <thead>
+                            <tr>
+                                <th>Key</th>
+                                <th>Key Data</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
