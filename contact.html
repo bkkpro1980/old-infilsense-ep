@@ -144,7 +144,7 @@
         <div class="terms-grid animate__animated animate__fadeIn animate__delay-1s">
             <div class="terms-card">
                 <div class="card-icon">
-                    <img src="Media/ContactUs.png" alt="Contact Us Icon" width="60" height="60">
+                    <img src="Media/ContactUs.png" alt="Contact Us Icon" width="60" height="60" loading="lazy" decoding="async">
                 </div>
                 <h3 class="infilsense-gradient">Methods</h3>
                 <h3>Emails</h3>
@@ -162,7 +162,15 @@
         <p>By using our service(s), you acknowledge that you have read, understood, and agree to be bound by our <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>.</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="main.js"></script>
+    <script>
+        // Load particles only on larger screens to avoid mobile CPU overhead
+        if (window.innerWidth > 800 && !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+            const s = document.createElement('script');
+            s.src = 'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js';
+            s.defer = true;
+            document.body.appendChild(s);
+        }
+    </script>
+    <script defer src="main.js"></script>
 </body>
 </html>
