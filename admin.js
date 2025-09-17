@@ -11,12 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (user) {
                 await user.getIdToken(true);
                 console.log("ID token refreshed; admin claims should be current.");
-
+                
                 // Optional: now safely fetch /Configs or /Keys
                 const configsRef = db.ref('Configs');
                 configsRef.once('value').then(snapshot => {
                     console.log('Configs snapshot after refresh:', snapshot.val());
                 });
+                window.location.href = 'admin-dashboard.html';
             }
         });
 
