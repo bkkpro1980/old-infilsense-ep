@@ -325,7 +325,7 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: shimmer 3s linear infinite, textGlitch 5s infinite;
+    /* animation: shimmer 3s linear infinite, textGlitch 5s infinite; */
 }
 
 .infilsense-gradient {
@@ -544,11 +544,11 @@ html {
     max-width: 500px; /* Reduced from 700px */
     width: 100%; /* Ensures responsiveness */
     height: auto; /* Maintains aspect ratio */
-    transition: all 0.4s ease;
+    transition: all 0.2s ease;
 }
 
 .hero-image:hover {
-    transform: scale(1.08) rotate(-3deg);
+    transform: scale(1.1) rotate(-3deg);
 }
 
 @keyframes neonFlicker {
@@ -625,12 +625,14 @@ html {
     justify-content: center;
     min-height: 100vh;
     color: #FFFFFF;
+    padding: 1rem;
 }
 
 .login-container h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin-bottom: 1.5rem;
     color: #FFFFFF;
+    text-align: center;
 }
 
 #login-form {
@@ -638,32 +640,35 @@ html {
     flex-direction: column;
     gap: 1rem;
     width: 100%;
-    max-width: 400px;
-    padding: 2rem;
+    max-width: min(400px, 90%);
+    padding: clamp(1rem, 5vw, 2rem);
     background-color: rgba(3, 8, 20, 0.8);
     border: 1px solid #101420;
     border-radius: 10px;
 }
 
 #login-form input {
-    padding: 1rem;
+    padding: clamp(0.75rem, 3vw, 1rem);
     border-radius: 5px;
     border: 1px solid #101420;
     background-color: #050D22;
     color: #FFFFFF;
-    font-size: 1rem;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 #login-form button {
-    padding: 1rem;
+    padding: clamp(0.75rem, 3vw, 1rem);
     border-radius: 5px;
     border: none;
     background: linear-gradient(45deg, #5A9EF8, #3676EF);
     color: white;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
     cursor: pointer;
     transition: all 0.3s ease;
+    width: 100%;
 }
 
 #login-form button:hover {
