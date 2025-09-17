@@ -14,35 +14,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
     <style>
-        /* Respect user preference for reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
-            }
-        }
-
-        /* Disable heavy animations/particles on small screens to improve mobile performance */
-        @media (max-width: 800px) {
-            .retrowave-bg,
-            #particles-js,
-            .retro-tiles,
-            .hologram-effect,
-            .glow-effect,
-            .hero-image-container img {
-                opacity: 0.999; /* keep layout but avoid heavy paints */
-                animation: none !important;
-                will-change: auto !important;
-                transform: none !important;
-            }
-
-            /* Hide particle container entirely on small devices */
-            #particles-js {
-                display: none !important;
-                visibility: hidden !important;
-                height: 0 !important;
-            }
-        }
         .glow-particle {
             position: absolute;
             width: 5px;
