@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="InfilSense Core is a Roblox project offering cutting-edge scripts for an unparalleled gaming experience. Join our community for exclusive access and support.">
+    <title>InfilSense Core</title>
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; connect-src 'self' https://infilserver.dpdns.org;">
+    <meta name="google-site-verification" content="wNXhe-GfHa7sGQEiWo-OJfgzOT5T9RIVwjJ1-xrUj9k" />
+    <link rel="icon" type="image/x-icon" href="Media/InfilSenseTransparentLogo.png">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+    <style>
+        .glow-particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: radial-gradient(circle, #5A9EF8 0%, rgba(90, 158, 248, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .button-container {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .centered {
+            display: flex;
+            flex-direction: column; /* stack heading and button */
+            align-items: center; /* center horizontally */
+            justify-content: center; /* center vertically */
+            padding: 4rem 2rem; /* balanced padding for smaller screens */
+            gap: 2rem;
+            min-height: calc(80vh - 160px); /* account for header/footer space */
+            position: relative;
+            margin-bottom: 0; /* footer handled separately */
+            overflow: hidden; /* Prevent content overflow */
+            text-align: center; /* center text inside */
+        }
+
+        @media (max-width: 1200px) {
+            .button-container {
+                justify-content: center;
+                width: 100%;
+            }
+
+            .download-btn {
+                width: 100%;
+                max-width: 300px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+    <div class="retrowave-bg"></div>
+    <div class="retro-tiles animate__animated animate__fadeInUp">
+        <div class="tile-grid"></div>
+    </div>
+    <div id="particles-js"></div>
+
+    <main class="centered">
+        <h1 class="section-title gradient-text animate__animated animate__fadeInDown">
+            Thanks for supporting InfilSense!
+        </h1>
+
+        <div class="button-container animate__animated animate__fadeInUp animate__delay-1s">
+            <a href="#" class="download-btn cyberpunk-btn">
+                <!-- <img src="Media/lock.png" alt="Lock Icon" class="github-icon" width="35" height="35" loading="lazy" decoding="async"> -->
+                <i class="fas fa-github"></i>
+                <span>Send results to bot</span>
+                <div class="btn-glitch-effect"></div>
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>By using our service(s), you acknowledge that you have read, understood, and agree to be bound by our <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>.</p>
+    </footer>
+
+    <script defer src="js/main.js"></script>
+    <script defer src="js/ads.js"></script>
+</body>
+</html>

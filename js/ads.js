@@ -1,6 +1,6 @@
 // Read the `data` query param and POST it to the key API endpoint.
 (function () {
-	const API_URL = 'https://infilserver.dpdns.org/v1/key';
+	const API_URL = 'https://infilserver.dpdns.org/v1/ads';
 
 	// Extract raw query param value while preserving '+' characters
 	function qs(name) {
