@@ -26,9 +26,24 @@
         }
 
         .button-container {
-            display: flex;
-            justify-content: flex-start;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
             margin-top: 2rem;
+        }
+
+        .centered {
+            display: flex;
+            flex-direction: column; /* stack heading and button */
+            align-items: center; /* center horizontally */
+            justify-content: center; /* center vertically */
+            padding: 4rem 2rem; /* balanced padding for smaller screens */
+            gap: 2rem;
+            min-height: calc(80vh - 160px); /* account for header/footer space */
+            position: relative;
+            margin-bottom: 0; /* footer handled separately */
+            overflow: hidden; /* Prevent content overflow */
+            text-align: center; /* center text inside */
         }
 
         @media (max-width: 1200px) {
@@ -55,26 +70,19 @@
         <div class="tile-grid"></div>
     </div>
     <div id="particles-js"></div>
-    <main class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title animate__animated animate__fadeInDown">
-                <span class="gradient-text cyberpunk-text">Revolutionizing the future of </span>
-                <span class="infilsense-gradient glow-effect cyberpunk-text">Roblox scripts</span>
-            </h1>
-            <p class="hero-description animate__animated animate__fadeInLeft animate__delay-1s neon-text">
-                Elevate your gameplay with cutting-edge scripts designed to deliver a seamless, premium experience. Harness the power of the latest technologies to take your gaming adventure to unparalleled heights.
-            </p>
-            <div class="button-container animate__animated animate__fadeInUp animate__delay-1s">
-				<a href="community.html" class="download-btn cyberpunk-btn">
-                    <img src="Media/DiscordIcon.png" alt="Discord Icon" class="github-icon" width="35" height="35" loading="lazy" decoding="async">
-					<i class="fas fa-github"></i>
-					<span>Get the script</span>
-					<div class="btn-glitch-effect"></div>
-				</a>
-            </div>
-        </div>
-        <div class="hero-image-container">
-            <img src="Media/InfilSenseThumbnail.png" alt="InfilSense Thumbnail" class="hero-image hologram-effect" style="max-width: 80%; max-height: 500px; object-fit: contain;" width="800" height="500" loading="lazy" decoding="async">
+
+    <main class="centered">
+        <h1 class="section-title gradient-text animate__animated animate__fadeInDown">
+            Generate your key now
+        </h1>
+
+        <div class="button-container animate__animated animate__fadeInUp animate__delay-1s">
+            <a href="#" class="download-btn cyberpunk-btn">
+                <img src="Media/lock.png" alt="Lock Icon" class="github-icon" width="35" height="35" loading="lazy" decoding="async">
+                <i class="fas fa-github"></i>
+                <span>Generate key</span>
+                <div class="btn-glitch-effect"></div>
+            </a>
         </div>
     </main>
 
@@ -83,5 +91,6 @@
     </footer>
 
     <script defer src="js/main.js"></script>
+    <script defer src="js/genkey.js"></script>
 </body>
 </html>
