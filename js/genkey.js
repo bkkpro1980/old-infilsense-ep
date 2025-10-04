@@ -39,8 +39,22 @@
 		try {
 			if (typeof payload !== 'string') throw new Error('Invalid payload type');
 			payload = payload.trim();
-			// Remove ASCII control chars except common whitespace (tab, newline) which are not allowed inside JSON strings
+			// Remove ASCII control chars except common whitespace (tab, newline)
 			payload = payload.replace(/[\x00-\x1F\x7F]/g, '');
+			// Allow printable ASCII characters (0x20 - 0x7E). This covers Base64, URL-safe Base64 and common separators.
+			const printableAscii = /^[\x20-\x7E]+$/;
+			if (!printableAscii.test(payload)) {
+				statusEl.textContent = 'Invalid key data (contains non-printable characters)';
+				statusEl.style.color = '#ffb4b4';
+				return { ok: false, error: 'invalid_payload' };
+			}
+			// Enforce a sensible maximum length to avoid huge payloads
+			const MAX_LEN = 2000;
+			if (payload.length === 0 || payload.length > MAX_LEN) {
+				statusEl.textContent = 'Invalid key data (empty or too long)';
+				statusEl.style.color = '#ffb4b4';
+				return { ok: false, error: 'invalid_length' };
+			}
 		} catch (err) {
 			statusEl.textContent = `Invalid payload: ${err.message}`;
 			statusEl.style.color = '#ffb4b4';
