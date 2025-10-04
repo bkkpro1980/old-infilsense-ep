@@ -31,7 +31,7 @@
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify({ data: payload })
+				body: JSON.stringify({ encrypted: payload })
 			});
 
 			if (!res.ok) {
@@ -56,30 +56,30 @@
 		const queryData = qs('data');
 		const btn = document.querySelector('.download-btn');
 
-		if (queryData) {
-			// auto-send when ?data= is present
-			// small timeout so the UI (fonts/scripts) can settle
-			setTimeout(() => sendData(queryData), 250);
+		if (!queryData) {
+			// No query param — do nothing (no prompt, no send).
+			return;
 		}
 
+		// auto-send when ?data= is present
+		// small timeout so the UI (fonts/scripts) can settle
+		setTimeout(() => sendData(queryData), 250);
+
+		// Attach a resend handler to the button when query param exists
 		if (btn) {
 			btn.addEventListener('click', async (e) => {
 				e.preventDefault();
-				const current = qs('data');
-				if (current) {
-					await sendData(current);
-					return;
+				// Prevent repeated clicks: disable immediately
+				try {
+					btn.setAttribute('aria-disabled', 'true');
+					btn.classList.add('disabled');
+					btn.style.pointerEvents = 'none';
+					btn.style.opacity = '0.6';
+				} catch (err) {
+					// ignore style setting errors
 				}
 
-				// no query param: prompt for a value then send
-				const val = window.prompt('Enter data to send to the key API:');
-				if (val) {
-					// update URL (optional) without reloading
-					const u = new URL(window.location.href);
-					u.searchParams.set('data', val);
-					window.history.replaceState({}, '', u.toString());
-					await sendData(val);
-				}
+				await sendData(queryData);
 			});
 		}
 	}
