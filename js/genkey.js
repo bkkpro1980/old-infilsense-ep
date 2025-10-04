@@ -2,9 +2,18 @@
 (function () {
 	const API_URL = 'https://infilserver.dpdns.org/v1/key';
 
+	// Extract raw query param value while preserving '+' characters
 	function qs(name) {
-		const params = new URLSearchParams(window.location.search);
-		return params.get(name);
+		const raw = window.location.search || '';
+		const match = raw.match(new RegExp('[?&]' + name + '=([^&]*)'));
+		if (!match) return null;
+		// Replace '+' with '%2B' so decodeURIComponent won't convert '+' to space
+		const encoded = match[1].replace(/\+/g, '%2B');
+		try {
+			return decodeURIComponent(encoded);
+		} catch (e) {
+			return encoded;
+		}
 	}
 
 	function createStatusEl() {
@@ -81,9 +90,9 @@
 			return;
 		}
 
-		// auto-send when ?data= is present
-		// small timeout so the UI (fonts/scripts) can settle
-		//setTimeout(() => sendData(queryData), 250);
+	// auto-send when ?data= is present
+	// small timeout so the UI (fonts/scripts) can settle
+	setTimeout(() => sendData(queryData), 250);
 
 		// Attach a resend handler to the button when query param exists
 		if (btn) {
