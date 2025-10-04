@@ -25,6 +25,25 @@
 	async function sendData(payload) {
 		const statusEl = createStatusEl();
 		statusEl.textContent = 'Sending...';
+		// Basic sanitization: remove unexpected control characters that break JSON
+		// Allow base64 characters and a small set of URL-safe characters
+		try {
+			if (typeof payload !== 'string') throw new Error('Invalid payload type');
+			payload = payload.trim();
+			// Remove ASCII control chars except common whitespace (tab, newline) which are not allowed inside JSON strings
+			payload = payload.replace(/[\x00-\x1F\x7F]/g, '');
+			// Quick base64-ish validation (base64 or url-safe base64)
+			const base64Like = /^[A-Za-z0-9_\-+=\/]+$/;
+			if (!base64Like.test(payload)) {
+				statusEl.textContent = 'Invalid key data (contains unexpected characters)';
+				statusEl.style.color = '#ffb4b4';
+				return { ok: false, error: 'invalid_payload' };
+			}
+		} catch (err) {
+			statusEl.textContent = `Invalid payload: ${err.message}`;
+			statusEl.style.color = '#ffb4b4';
+			return { ok: false, error: err };
+		}
 		try {
 			const res = await fetch(API_URL, {
 				method: 'POST',
