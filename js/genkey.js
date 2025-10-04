@@ -63,7 +63,7 @@
 
 		// auto-send when ?data= is present
 		// small timeout so the UI (fonts/scripts) can settle
-		setTimeout(() => sendData(queryData), 250);
+		//setTimeout(() => sendData(queryData), 250);
 
 		// Attach a resend handler to the button when query param exists
 		if (btn) {
