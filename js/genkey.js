@@ -45,12 +45,13 @@
 			return { ok: false, error: err };
 		}
 		try {
+			console.log(payload);
 			const res = await fetch(API_URL, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify({ encrypted: payload })
+				body: JSON.stringify({ 'encrypted': payload })
 			});
 
 			if (!res.ok) {
