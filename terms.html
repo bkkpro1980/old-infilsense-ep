@@ -27,7 +27,7 @@
     }
 
     .terms-section {
-        padding: 60px 5% 5rem;
+        padding: 60px 15% 5rem;
         min-height: 100vh;
         color: #ffffff;
         position: relative;
@@ -39,7 +39,6 @@
         flex-direction: column;
         gap: 2rem;
         margin-top: 4rem;
-        max-width: 800px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -48,18 +47,13 @@
         background: rgba(3, 8, 20, 0.8);
         border: 1px solid #101420;
         border-radius: 15px;
-        padding: 2rem;
+        padding: 2.5rem;
         backdrop-filter: blur(10px);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         color: #ffffff;
         margin-bottom: 2rem;
         width: 100%;
         box-sizing: border-box;
-
-        text-align: left;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
 
     .terms-card:hover {
@@ -72,19 +66,44 @@
         margin-bottom: 1.5rem;
         color: #5A9EF8;
         text-align: center;
+        display: flex;
+        justify-content: center;
     }
 
-    .terms-card h2,
-    .terms-card h3 {
+    .terms-card h2 {
         color: #ffffff;
         text-align: center;
         margin-bottom: 1rem;
+        font-size: 1.8rem;
+    }
+
+    .terms-card h3 {
+        color: #ffffff;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        font-size: 1.3rem;
+    }
+
+    .terms-card h3:first-of-type {
+        margin-top: 1.5rem;
     }
 
     .terms-card p {
+        color: #e0e0e0;
+        margin-bottom: 0.75rem;
+        line-height: 1.8;
+        font-size: 1.05rem;
+    }
+
+    .terms-card p strong {
         color: #ffffff;
-        margin-bottom: 1rem;
-        line-height: 1.6;
+    }
+
+    .effective-date {
+        text-align: center;
+        color: #a0a0a0;
+        font-style: italic;
+        margin-bottom: 2rem;
     }
 
     .terms-card ul {
@@ -123,6 +142,10 @@
             font-size: 2.5rem;
         }
 
+        .terms-section {
+            padding: 60px 5% 5rem;
+        }
+
         .terms-card {
             padding: 1.5rem;
         }
@@ -143,20 +166,21 @@
 
         <div class="terms-grid animate__animated animate__fadeIn animate__delay-1s">
             <div class="terms-card">
-                <div class="card-icon">
-                    <img src="Media/tos.png" alt="ToS Icon" width="60" height="60" loading="lazy" decoding="async">
-                </div>
-                <h3 class="infilsense-gradient">InfilSense Loader</h3>
-                <p><strong>Effective Date:</strong> 21/05/2025</p>
+                <h2 class="infilsense-gradient">InfilSense Loader</h2>
+                <p class="effective-date"><strong>Effective Date:</strong> May 21, 2025</p>
 
                 <h3>1. Usage Restrictions</h3>
-                <p>- You must not use this service to impersonate another user or bypass restrictions.</p>
-                <p>- Connecting a key for another user is strictly prohibited and may result in your account being blacklisted.</p>
+                <ul>
+                    <li>You must not use this service to impersonate another user or bypass restrictions.</li>
+                    <li>Connecting a key for another user is strictly prohibited and may result in your account being blacklisted.</li>
+                </ul>
 
                 <h3>2. Key System</h3>
-                <p>- Keys are unique and tied to your Roblox User ID.</p>
-                <p>- Generating a new key will invalidate previously issued keys.</p>
-                <p>- Keys are automatically disconnected if you leave the associated Discord server.</p>
+                <ul>
+                    <li>Keys are unique and tied to your Roblox User ID.</li>
+                    <li>Generating a new key will invalidate previously issued keys.</li>
+                    <li>Keys are automatically disconnected if you leave the associated Discord server.</li>
+                </ul>
 
                 <h3>3. Service Termination</h3>
                 <p>We reserve the right to terminate or suspend your access to the service at any time for violation of these terms or misuse of the system.</p>
@@ -169,30 +193,33 @@
             </div>
 
             <div class="terms-card">
-                <!-- <div class="card-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div> -->
-                <h3 class="infilsense-gradient">InfilSense Library</h3>
-                <p><strong>Effective Date:</strong> 31/05/2025</p>
+                <h2 class="infilsense-gradient">InfilSense Library</h2>
+                <p class="effective-date"><strong>Effective Date:</strong> May 31, 2025</p>
 
                 <h3>1. Ownership and Attribution</h3>
-                <p>- This UI library, <strong>InfilSense Library</strong>, is developed and owned by <strong>bkkpro1980</strong>.</p>
-                <p>- You are free to use this library in both personal and commercial projects.</p>
-                <p>- Under the <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0 License</a>, attribution is required.</p>
+                <ul>
+                    <li>This UI library, <strong>InfilSense Library</strong>, is developed and owned by <strong>bkkpro1980</strong>.</li>
+                    <li>You are free to use this library in both personal and commercial projects.</li>
+                    <li>Under the <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0 License</a>, attribution is required.</li>
+                </ul>
 
                 <h3>2. Prohibited Actions</h3>
-                <p>- You may <strong>not</strong> claim this library as your own original work.</p>
-                <p>- You may <strong>not</strong> redistribute this library under your own name or brand.</p>
-                <p>- Any attempt to misrepresent authorship or origin of the library is strictly prohibited.</p>
+                <ul>
+                    <li>You may <strong>not</strong> claim this library as your own original work.</li>
+                    <li>You may <strong>not</strong> redistribute this library under your own name or brand.</li>
+                    <li>Any attempt to misrepresent authorship or origin of the library is strictly prohibited.</li>
+                </ul>
 
                 <h3>3. Consequences of Misuse</h3>
-                <p> Any misrepresentation or unauthorized claims of ownership may result in: </p>
-                <p>- Public revocation of usage rights,</p>
-                <p>- Community blacklisting or reporting,</p>
-                <p>- Removal requests or DMCA actions on hosting platforms.</p>
+                <p>Any misrepresentation or unauthorized claims of ownership may result in:</p>
+                <ul>
+                    <li>Public revocation of usage rights</li>
+                    <li>Community blacklisting or reporting</li>
+                    <li>Removal requests or DMCA actions on hosting platforms</li>
+                </ul>
 
                 <h3>4. No Warranty</h3>
-                <p> This library is provided "as is" without warranty of any kind. The developer is not responsible for any damage or issues caused by the use of this library.</p>
+                <p>This library is provided "as is" without warranty of any kind. The developer is not responsible for any damage or issues caused by the use of this library.</p>
 
                 <h3>5. Updates and Changes</h3>
                 <p>The author reserves the right to modify, update, or discontinue the library at any time without prior notice. Continued use of the library after changes constitutes acceptance of the updated terms.</p>

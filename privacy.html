@@ -27,7 +27,7 @@
     }
 
     .terms-section {
-        padding: 60px 5% 5rem;
+        padding: 60px 15% 5rem;
         min-height: 100vh;
         color: #ffffff;
         position: relative;
@@ -39,7 +39,6 @@
         flex-direction: column;
         gap: 2rem;
         margin-top: 4rem;
-        max-width: 800px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -48,18 +47,13 @@
         background: rgba(3, 8, 20, 0.8);
         border: 1px solid #101420;
         border-radius: 15px;
-        padding: 2rem;
+        padding: 2.5rem;
         backdrop-filter: blur(10px);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         color: #ffffff;
         margin-bottom: 2rem;
         width: 100%;
         box-sizing: border-box;
-
-        text-align: left;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
 
     .terms-card:hover {
@@ -72,19 +66,52 @@
         margin-bottom: 1.5rem;
         color: #5A9EF8;
         text-align: center;
+        display: flex;
+        justify-content: center;
     }
 
-    .terms-card h2,
-    .terms-card h3 {
+    .terms-card h2 {
         color: #ffffff;
         text-align: center;
         margin-bottom: 1rem;
+        font-size: 1.8rem;
+    }
+
+    .terms-card h3 {
+        color: #ffffff;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        font-size: 1.3rem;
+    }
+
+    .terms-card h3:first-of-type {
+        margin-top: 1.5rem;
     }
 
     .terms-card p {
+        color: #e0e0e0;
+        margin-bottom: 0.75rem;
+        line-height: 1.8;
+        font-size: 1.05rem;
+    }
+
+    .terms-card p strong {
         color: #ffffff;
-        margin-bottom: 1rem;
-        line-height: 1.6;
+    }
+
+    .effective-date {
+        text-align: center;
+        color: #a0a0a0;
+        font-style: italic;
+        margin-bottom: 2rem;
+    }
+
+    .privacy-highlight {
+        background: rgba(90, 158, 248, 0.1);
+        padding: 1.5rem;
+        border-radius: 10px;
+        border-left: 3px solid #5A9EF8;
+        margin: 1.5rem 0;
     }
 
     .terms-card ul {
@@ -123,6 +150,10 @@
             font-size: 2.5rem;
         }
 
+        .terms-section {
+            padding: 60px 5% 5rem;
+        }
+
         .terms-card {
             padding: 1.5rem;
         }
@@ -143,41 +174,46 @@
 
         <div class="terms-grid animate__animated animate__fadeIn animate__delay-1s">
             <div class="terms-card">
-                <div class="card-icon">
-                    <img src="Media/privacy.png" alt="Privacy Policy Icon" width="60" height="60" loading="lazy" decoding="async">
-                </div>
-                <h3 class="infilsense-gradient">InfilSense Loader</h3>
-
-                <p><strong>Effective Date:</strong> 21/05/2025</p>
+                <h2 class="infilsense-gradient">InfilSense Loader</h2>
+                <p class="effective-date"><strong>Effective Date:</strong> May 21, 2025</p>
 
                 <h3>What Data We Collect</h3>
-                <p>- Roblox Username</p>
-                <p>- Roblox User ID</p>
-                <p>- Current place being played</p>
-                <p>- Script usage</p>
+                <ul>
+                    <li>Roblox Username</li>
+                    <li>Roblox User ID</li>
+                    <li>Current place being played</li>
+                    <li>Script usage</li>
+                </ul>
 
                 <h3>How We Use Your Data</h3>
-                <p>- To validate and manage key access</p>
-                <p>- To provide features such as key connection/disconnection</p>
-                <p>- To monitor usage and prevent abuse</p>
-                <p>- For internal analysis and security purposes</p>
+                <ul>
+                    <li>To validate and manage key access</li>
+                    <li>To provide features such as key connection/disconnection</li>
+                    <li>To monitor usage and prevent abuse</li>
+                    <li>For internal analysis and security purposes</li>
+                </ul>
 
                 <h3>Who Can View Your Data</h3>
                 <p>Your data may be viewed by the owner and co-owners of the associated Discord server. It is not shared with external third parties.</p>
+                
                 <h3>Your Rights</h3>
-                <p>- You may request data review or deletion by opening a support ticket.</p>
-                <p>- Disconnecting your key limits further data collection.</p>
+                <ul>
+                    <li>You may request data review or deletion by opening a support ticket.</li>
+                    <li>Disconnecting your key limits further data collection.</li>
+                </ul>
+                
                 <h3>Data Retention</h3>
                 <p>Your data is stored while your key is active or until manually removed by staff.</p>
             </div>
 
             <div class="terms-card animate__animated animate__fadeIn">
-                <!-- <div class="card-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div> -->
-                <h3 class="infilsense-gradient">InfilSense Library</h3>
-                <p><strong>Effective Date:</strong> 31/05/2025</p>
-                <h3>We do not collect, store, or share any personal information.</h3>
+                <h2 class="infilsense-gradient">InfilSense Library</h2>
+                <p class="effective-date"><strong>Effective Date:</strong> May 31, 2025</p>
+                
+                <div class="privacy-highlight">
+                    <h3 style="margin-top: 0;">No Data Collection</h3>
+                    <p style="margin-bottom: 0;">We do not collect, store, or share any personal information.</p>
+                </div>
             </div>
         </div>
     </main>
