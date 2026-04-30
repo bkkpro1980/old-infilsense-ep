@@ -7,6 +7,7 @@ body {
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
     overflow-y: auto;
+    padding-bottom: 80px;
 }
 
 .header {
@@ -23,11 +24,10 @@ body {
     z-index: 1000;
 }
 
-/* Logo group styling */
 .logo-group {
     display: flex;
     align-items: center;
-    margin-right: auto; /* Push everything else to the right */
+    margin-right: auto;
 }
 
 .logo {
@@ -70,12 +70,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5rem 4rem 6rem; /* Increased bottom padding */
+    padding: 5rem 4rem 6rem;
     gap: 3rem;
     min-height: 80vh;
     position: relative;
-    margin-bottom: 60px; /* Add margin to account for footer */
-    overflow: hidden; /* Prevent content overflow */
+    margin-bottom: 60px;
+    overflow: hidden;
 }
 
 .footer {
@@ -97,13 +97,13 @@ body {
     justify-content: center;
 }
 
-.footer a {
+a {
     color: #5A9EF8;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.footer a:hover {
+a:hover {
     color: #3676EF;
 }
 
@@ -308,10 +308,32 @@ body {
     }
 }
 
+/* Info sections spacing */
+.info-section {
+    padding: 1.5rem 15% 2rem;
+}
+
 
 .hero-content {
     flex: 1;
     min-width: 0; /* Prevents overflow in flex containers */
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.cyberpunk-text {
+    color: #ffffff;
+}
+
+.neon-text {
+    color: #989BA3;
 }
 
 .hero-title {
@@ -338,7 +360,7 @@ body {
 
 .hero-description {
     color: #989BA3;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     line-height: 2;
     margin-bottom: 3rem;
     max-width: 700px;
@@ -380,11 +402,19 @@ body {
 .download-btn:hover {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 8px 30px rgba(54, 118, 239, 0.6);
+    color: white !important;
 }
 
 .download-btn:hover::before {
     transform: scale(1);
     /* animation: ripple 1s linear; */
+}
+
+.info-section .download-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    max-height: auto;
+    margin: 0;
 }
 
 .hero-image-container {

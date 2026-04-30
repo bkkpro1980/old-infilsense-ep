@@ -2,86 +2,227 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="InfilSense Core is a Roblox project offering cutting-edge scripts for an unparalleled gaming experience. Join our community for exclusive access and support.">
-    <title>InfilSense Core</title>
+    <title>InfilSense Core | Advanced Roblox Script System</title>
 
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;">
+    <meta name="description" content="InfilSense Core is a Roblox scripting platform offering advanced tools, utilities, and enhancements designed for a premium gameplay experience. Join our community for updates, features, and support.">
+
     <meta name="google-site-verification" content="wNXhe-GfHa7sGQEiWo-OJfgzOT5T9RIVwjJ1-xrUj9k" />
-    <link rel="icon" type="image/x-icon" href="Media/InfilSenseTransparentLogo.png">
+
+    <link rel="icon" href="Media/InfilSenseTransparentLogo.png">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
-        .glow-particle {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            background: radial-gradient(circle, #5A9EF8 0%, rgba(90, 158, 248, 0) 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        .info-section {
+            padding: 1.5rem 15% 2rem;
+            padding-bottom: 3rem;
+            margin-bottom: 1rem;
+            max-width: 100%;
+            color: #ffffff;
+            position: relative;
+            z-index: 1;
         }
 
-        .button-container {
+        .info-section > * {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 800px;
+        }
+
+        .info-section > *:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            margin-top: 0;
+            text-align: center;
+            background: linear-gradient(45deg, #5A9EF8, #3676EF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .info-section h3 {
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .info-section p {
+            color: #e0e0e0;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .info-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 2rem auto;
             display: flex;
-            justify-content: flex-start;
-            margin-top: 2rem;
+            flex-direction: column;
+            align-items: center;
         }
 
-        @media (max-width: 1200px) {
-            .button-container {
-                justify-content: center;
-                width: 100%;
+        .info-section li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 0;
+            color: #e0e0e0;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-section li i {
+            color: #5A9EF8;
+            font-size: 1.3rem;
+            min-width: 30px;
+        }
+
+        .info-section .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
+        }
+
+        @media (max-width: 768px) {
+            .info-section {
+                padding: 3rem 5% 3rem;
             }
 
-            .download-btn {
-                width: 100%;
-                max-width: 300px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 10px;
+            .info-section h2 {
+                font-size: 2rem;
+            }
+
+            .info-section h3 {
+                font-size: 1.2rem;
             }
         }
     </style>
+
 </head>
+
 <body>
-    <div id="header"></div>
-    <div class="retrowave-bg"></div>
-    <div class="retro-tiles animate__animated animate__fadeInUp">
-        <div class="tile-grid"></div>
+
+<div id="header"></div>
+
+<div class="retrowave-bg"></div>
+<div class="retro-tiles"></div>
+<div id="particles-js"></div>
+
+<main class="hero">
+
+    <!-- HERO -->
+    <section class="hero-content">
+        <h1 class="hero-title cyberpunk-text animate__animated animate__fadeInDown">
+            Revolutionizing Roblox scripting with
+            <span class="infilsense-gradient glow-effect">InfilSense Core</span>
+        </h1>
+
+        <p class="hero-description neon-text animate__animated animate__fadeInLeft">
+            InfilSense Core is an advanced Roblox scripting platform built to enhance gameplay, improve efficiency, and unlock powerful in-game utilities. Designed for performance, stability, and a smooth user experience.
+        </p>
+
+        <div class="button-container animate__animated animate__fadeInUp">
+            <a href="community.html" class="download-btn cyberpunk-btn">
+                <img src="Media/DiscordIcon.png" alt="Discord" width="28" height="28">
+                <span>Join Community / Get Script</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- IMAGE -->
+    <section class="hero-image-container">
+        <img src="Media/InfilSenseThumbnail.png"
+             alt="InfilSense Core Preview"
+             class="hero-image hologram-effect"
+             loading="lazy">
+    </section>
+
+</main>
+
+<section class="info-section">
+
+    <h2>What is InfilSense Core?</h2>
+    <p>
+        InfilSense Core is a Roblox scripting project focused on delivering advanced tools and enhancements for supported experiences.
+        It is designed for users who want a smoother, more powerful gameplay environment with improved control and customization.
+    </p>
+
+</section>
+
+<section class="info-section">
+
+    <h2>Key Features</h2>
+    <ul>
+        <li><i class="fas fa-bolt"></i> <span>Optimized script performance for smooth gameplay</span></li>
+        <li><i class="fas fa-brain"></i> <span>Smart utilities designed for Roblox environments</span></li>
+        <li><i class="fas fa-lock"></i> <span>Community-driven updates and improvements</span></li>
+        <li><i class="fas fa-feather"></i> <span>Lightweight integration with minimal performance impact</span></li>
+    </ul>
+
+</section>
+
+<section class="info-section">
+
+    <h2>Community & Updates</h2>
+    <p>
+        Join the official community to get updates, support, and new releases. We actively improve InfilSense Core based on feedback and testing.
+    </p>
+
+    <div class="button-container">
+        <a href="community.html" class="download-btn cyberpunk-btn">
+            Join Discord Community
+        </a>
     </div>
-    <div id="particles-js"></div>
-    <main class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title animate__animated animate__fadeInDown">
-                <span class="gradient-text cyberpunk-text">Revolutionizing the future of </span>
-                <span class="infilsense-gradient glow-effect cyberpunk-text">Roblox scripts</span>
-            </h1>
-            <p class="hero-description animate__animated animate__fadeInLeft animate__delay-1s neon-text">
-                Elevate your gameplay with cutting-edge scripts designed to deliver a seamless, premium experience. Harness the power of the latest technologies to take your gaming adventure to unparalleled heights.
-            </p>
-            <div class="button-container animate__animated animate__fadeInUp animate__delay-1s">
-				<a href="community.html" class="download-btn cyberpunk-btn">
-                    <img src="Media/DiscordIcon.png" alt="Discord Icon" class="github-icon" width="35" height="35" loading="lazy" decoding="async">
-					<i class="fas fa-github"></i>
-					<span>Get the script</span>
-					<div class="btn-glitch-effect"></div>
-				</a>
-            </div>
-        </div>
-        <div class="hero-image-container">
-            <img src="Media/InfilSenseThumbnail.png" alt="InfilSense Thumbnail" class="hero-image hologram-effect" style="max-width: 80%; max-height: 500px; object-fit: contain;" width="800" height="500" loading="lazy" decoding="async">
-        </div>
-    </main>
 
-    <footer class="footer">
-        <p>By using our service(s), you acknowledge that you have read, understood, and agree to be bound by our <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a>.</p>
-    </footer>
+</section>
 
-    <script defer src="js/main.js"></script>
+<section class="info-section">
+
+    <h2>Frequently Asked Questions</h2>
+
+    <h3>Is InfilSense Core safe to use?</h3>
+    <p>
+        InfilSense Core is designed with stability and controlled usage in mind. Always follow community guidelines and usage instructions.
+    </p>
+
+    <h3>Is it free?</h3>
+    <p>
+        InfilSense is available for free to the community. However, InfilSense Loader requires a license key, which can be obtained through our Discord community. This helps us maintain and improve the project while keeping it accessible to everyone.
+    </p>
+
+    <h3>Where can I get support?</h3>
+    <p>
+        Support is available through the official <a href="community.html">Discord community</a>.
+    </p>
+
+</section>
+
+<footer class="footer">
+    <p>
+        By using this service, you agree to our
+        <a href="terms.html">Terms of Service</a>
+        and
+        <a href="privacy.html">Privacy Policy</a>.
+    </p>
+</footer>
+
+<script defer src="js/main.js"></script>
+
 </body>
 </html>
