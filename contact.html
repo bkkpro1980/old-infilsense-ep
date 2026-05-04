@@ -3,186 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InfilSense ToS</title>
+    <title>InfilSense Contact</title>
+
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;">
+
     <link rel="icon" type="image/x-icon" href="Media/InfilSenseTransparentLogo.png">
-	<link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="main.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        background: linear-gradient(135deg, #0a0a0a, #1a1a2e, #16213e);
-        font-family: 'Arial', sans-serif;
-        overflow-x: hidden;
-    }
 
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #0a0a0a, #1a1a2e, #16213e);
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 3.5rem;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.terms-section {
+    padding: 60px 15% 5rem;
+    min-height: 100vh;
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+}
+
+.terms-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.terms-card {
+    background: rgba(3, 8, 20, 0.8);
+    border: 1px solid #101420;
+    border-radius: 15px;
+    padding: 2.5rem;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.terms-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 30px rgba(90, 158, 248, 0.3);
+}
+
+.terms-card h2 {
+    margin-bottom: 1rem;
+}
+
+.terms-card p {
+    color: #e0e0e0;
+    line-height: 1.7;
+}
+
+.contact-method {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(90, 158, 248, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(90, 158, 248, 0.1);
+}
+
+.terms-card a {
+    color: #5A9EF8;
+    text-decoration: none;
+}
+
+.terms-card a:hover {
+    color: #3676EF;
+}
+
+@media (max-width: 768px) {
     .section-title {
-        text-align: center;
-        font-size: 3.5rem;
-        padding-top: 2rem;
-        margin-bottom: 2rem;
+        font-size: 2.5rem;
     }
 
     .terms-section {
-        padding: 60px 15% 5rem;
-        min-height: 100vh;
-        color: #ffffff;
-        position: relative;
-        z-index: 1;
-    }
-
-    .terms-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        margin-top: 4rem;
-        margin-left: auto;
-        margin-right: auto;
+        padding: 60px 5% 5rem;
     }
 
     .terms-card {
-        background: rgba(3, 8, 20, 0.8);
-        border: 1px solid #101420;
-        border-radius: 15px;
-        padding: 2.5rem;
-        backdrop-filter: blur(10px);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        color: #ffffff;
-        margin-bottom: 2rem;
-        width: 100%;
-        box-sizing: border-box;
-        text-align: center;
-    }
-
-    .terms-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 0 30px rgba(90, 158, 248, 0.3);
-    }
-
-    .card-icon {
-        font-size: 3rem;
-        margin-bottom: 1.5rem;
-        color: #5A9EF8;
-        text-align: center;
-    }
-
-    .terms-card h2,
-    .terms-card h3 {
-        color: #ffffff;
-        text-align: center;
-        margin-bottom: 1rem;
-        margin-top: 2rem;
-    }
-
-    .terms-card h3:first-of-type {
-        margin-top: 0;
-    }
-
-    .terms-card p {
-        color: #e0e0e0;
-        margin-bottom: 0.75rem;
-        line-height: 1.8;
-        font-size: 1.05rem;
-    }
-
-    .contact-method {
-        margin: 2rem 0;
         padding: 1.5rem;
-        background: rgba(90, 158, 248, 0.05);
-        border-radius: 10px;
-        border: 1px solid rgba(90, 158, 248, 0.1);
     }
-
-    .contact-method:first-of-type {
-        margin-top: 0;
-    }
-
-    .terms-card ul {
-        padding-left: 0;
-        margin: 1rem 0;
-        list-style: none;
-    }
-
-    .terms-card li {
-        margin-bottom: 10px;
-        padding-left: 1.5rem;
-        position: relative;
-        color: #ffffff;
-    }
-
-    .terms-card li::before {
-        content: "•";
-        color: #5A9EF8;
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-
-    .terms-card a {
-        color: #5A9EF8;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    .terms-card a:hover {
-        color: #3676EF;
-    }
-
-    @media (max-width: 768px) {
-        .section-title {
-            font-size: 2.5rem;
-        }
-
-        .terms-section {
-            padding: 60px 5% 5rem;
-        }
-
-        .terms-card {
-            padding: 1.5rem;
-        }
-    }
+}
 </style>
+
 <body>
-    <div id="header"></div>
-    <div class="retrowave-bg"></div>
-    <div class="retro-tiles animate__animated animate__fadeInUp">
-        <div class="tile-grid"></div>
-    </div>
-    <div id="particles-js"></div>
 
-    <main class="terms-section">
-        <h1 class="section-title gradient-text animate__animated animate__fadeInDown">
-            Contact Us
-        </h1>
+<div id="header"></div>
+<div class="retrowave-bg"></div>
+<div class="retro-tiles animate__animated animate__fadeInUp">
+    <div class="tile-grid"></div>
+</div>
+<div id="particles-js"></div>
 
-        <div class="terms-grid animate__animated animate__fadeIn animate__delay-1s">
-            <div class="terms-card">
-                <h2 class="infilsense-gradient">Get in Touch</h2>
-                
-                <div class="contact-method">
-                    <h3>Discord</h3>
-                    <p>Join our <a href="community.html">Discord server</a> for the fastest response.</p>
-                    <p>Direct message: <strong>@bkkpro1980</strong></p>
-                </div>
+<main class="terms-section">
+    <h1 class="section-title gradient-text animate__animated animate__fadeInDown">
+        Contact Us
+    </h1>
 
-                <div class="contact-method">
-                    <h3>Email</h3>
-                    <p><em>Note: Some email providers may have strict filtering policies that affect delivery.</em></p>
-                    <p><strong>contact@infilsense.dpdns.org</strong></p>
-                    <p><strong>admin_bkkpro1980@infilsense.dpdns.org</strong></p>
-                </div>
+    <div class="terms-grid animate__animated animate__fadeIn animate__delay-1s">
+        <div class="terms-card">
+            <h2 class="infilsense-gradient">Get in Touch</h2>
+
+            <p>
+                For support, privacy requests, or general inquiries, feel free to reach out using the methods below.
+            </p>
+
+            <div class="contact-method">
+                <h3>Discord (Fastest)</h3>
+                <p>Join our <a href="community.html">Discord server</a> for the quickest support.</p>
+                <p>You can also contact the owner directly: <strong>bkkpro1980</strong></p>
             </div>
+
+            <div class="contact-method">
+                <h3>Email</h3>
+                <p><em>Note: Some email providers may filter messages or delay delivery.</em></p>
+
+                <p>
+                    <strong>
+                        <a href="mailto:contact@infilsense.dpdns.org">
+                            contact@infilsense.dpdns.org
+                        </a>
+                    </strong>
+                </p>
+
+                <p>
+                    <strong>
+                        <a href="mailto:admin_bkkpro1980@infilsense.dpdns.org">
+                            admin_bkkpro1980@infilsense.dpdns.org
+                        </a>
+                    </strong>
+                </p>
+            </div>
+
+            <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #aaa;">
+                Response times may vary depending on request volume.
+            </p>
         </div>
-    </main>
+    </div>
+</main>
 
-    <footer class="footer">
-        <p>By using InfilSense services, you acknowledge that you have read, understood, and agree to these Terms of Service and our <a href="privacy.html">Privacy Policy</a>.</p>
-    </footer>
+<footer class="footer">
+    <p>
+        For more information, please review our 
+        <a href="terms.html">Terms of Service</a> and 
+        <a href="privacy.html">Privacy Policy</a>.
+    </p>
+</footer>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script defer src="js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script defer src="js/main.js"></script>
+
 </body>
 </html>
