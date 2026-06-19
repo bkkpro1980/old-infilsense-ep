@@ -1,6 +1,6 @@
 // Read the `data` query param and POST it to the key API endpoint.
 (function () {
-	const API_URL = 'https://bkkpro1980-infilsense.hf.space/v1/ads';
+	const API_URL = 'https://infilsense.m.jrnm.app/v1/ads';
 
 	// Extract raw query param value while preserving '+' characters
 	function qs(name) {
